@@ -8,7 +8,7 @@ import java.util.List;
 public interface ClientService {
 
     public List<Client> findAllClient() ;
-    public Client findById() ;
+    public Client findById(long id) ;
     public String createClient();
     public Client updateClientInfo();
     public String deleteClient();
