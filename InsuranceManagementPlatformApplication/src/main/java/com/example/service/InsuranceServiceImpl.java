@@ -7,28 +7,29 @@ import java.util.List;
 
 @Service
 public class InsuranceServiceImpl implements InsurancePolicyService{
+
     @Override
     public List<InsurancePolicy> findAllInsurancePolicies() {
         return null;
     }
 
     @Override
-    public InsurancePolicy findById() {
+    public InsurancePolicy findById(int id) {
         return null;
     }
 
     @Override
-    public String createInsurancePolicy() {
+    public InsurancePolicy createInsurancePolicy(InsurancePolicy insurancePolicy) {
         return null;
     }
 
     @Override
-    public InsurancePolicy updateInsurancePolicy() {
+    public InsurancePolicy updateInsurancePolicy(int id, InsurancePolicy insurancePolicy) {
         return null;
     }
 
     @Override
-    public String deleteInsurancePolicy() {
+    public String deleteInsurancePolicy(int id) {
         return null;
     }
 }
