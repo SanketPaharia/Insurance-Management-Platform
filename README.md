@@ -53,6 +53,6 @@ http://localhost:8888/swagger-ui/
 
 
 
-# Collaborators
+# Collaborator
 
 - [Sanket Paharia](https://github.com/SanketPaharia)
