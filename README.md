@@ -49,7 +49,7 @@ http://localhost:8888/swagger-ui/
 ```
 
 # ER Diagram
-<img src="https://github.com/annax3/natural-sort-6825/blob/main/ER%20diagram.jpeg" >
+<img src="[https://github.com/annax3/natural-sort-6825/blob/main/ER%20diagram.jpeg](https://github.com/SanketPaharia/Insurance-Management-Platform/blob/master/ER%20diagram.png)" >
 
 
 
