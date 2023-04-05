@@ -8,10 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
+
 public class ClientController {
 
     @Autowired
@@ -19,14 +20,14 @@ public class ClientController {
 
 
     @PostMapping("/clients")
-    public ResponseEntity<Client> addClientHandler(@RequestBody Client client) {
+    public ResponseEntity<Client> addClientHandler(@Valid  @RequestBody Client client) {
         Client newClient = clientService.createClient(client);
         return new ResponseEntity<>(newClient, HttpStatus.CREATED);
     }
 
 
     @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> findClientHandler(@PathVariable Integer id){
+    public ResponseEntity<Client> findClientHandler(@Valid  @PathVariable Integer id){
         Client client = clientService.findById(id);
 
         return new ResponseEntity<>(client,HttpStatus.FOUND);
@@ -41,7 +42,7 @@ public class ClientController {
     }
 
     @PutMapping("/clients/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Integer id, @RequestBody Client client) {
+    public ResponseEntity<Client> updateClient(@Valid  @PathVariable Integer id, @RequestBody Client client) {
 
         clientService.updateClientInfo(id , client );
 

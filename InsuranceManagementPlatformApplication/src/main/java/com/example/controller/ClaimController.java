@@ -43,16 +43,16 @@ public class ClaimController {
         return new ResponseEntity<>(list ,HttpStatus.FOUND);
     }
 
-    @PutMapping("/clients/{id}")
-    public ResponseEntity<Claim> updateClient(@PathVariable Integer id, @RequestBody Claim claim) {
+    @PutMapping("/claims/{id}")
+    public ResponseEntity<Claim> updateClaim(@Valid  @PathVariable Integer id, @RequestBody Claim claim) {
 
         claimService.updateClaim(id , claim);
 
         return new ResponseEntity<>(claim ,HttpStatus.OK);
     }
 
-    @DeleteMapping("/clients/{id}")
-    public ResponseEntity<String> deleteClient(@PathVariable int id) {
+    @DeleteMapping("/claims/{id}")
+    public ResponseEntity<String> deleteClaim(@PathVariable int id) {
         String result =  claimService.deleteClaim(id);
 
         return new ResponseEntity<>(result , HttpStatus.ACCEPTED );
