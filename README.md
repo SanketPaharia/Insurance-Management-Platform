@@ -25,6 +25,8 @@
 - Client Service
 - Insurance Service
 
+
+
 # Installation & Run
  - Before running the API server, you should update the database config inside the application.properties file.
 - Update the port number, username and password as per your local database configuration.
@@ -46,7 +48,8 @@ https://localhost:8888/
 http://localhost:8888/swagger-ui/
 ```
 
-
+# ER Diagram
+<img src="https://github.com/annax3/natural-sort-6825/blob/main/ER%20diagram.jpeg" >
 
 
 
