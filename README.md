@@ -1,4 +1,4 @@
-# REST API for Insurace Management Platform .
+#  Insurance Management Platform .
 
 
 This is a project for an Insurance Management Platform built with Spring Boot, designed to simplify the process of managing insurance policies, clients, and claims. 
