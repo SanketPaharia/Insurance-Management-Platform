@@ -1,10 +1,8 @@
 package com.example.service;
 
-import com.example.controller.repository.ClaimDao;
+import com.example.repository.ClaimDao;
 import com.example.exception.ClaimException;
-import com.example.exception.ClientException;
 import com.example.model.Claim;
-import com.example.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

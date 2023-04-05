@@ -2,7 +2,7 @@ package com.example.service;
 
 import com.example.exception.ClientException;
 import com.example.model.Client;
-import com.example.controller.repository.ClientDao;
+import com.example.repository.ClientDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

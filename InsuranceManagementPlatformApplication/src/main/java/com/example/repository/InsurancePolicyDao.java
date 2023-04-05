@@ -1,4 +1,4 @@
-package com.example.controller.repository;
+package com.example.repository;
 
 import com.example.model.InsurancePolicy;
 import org.springframework.data.jpa.repository.JpaRepository;
