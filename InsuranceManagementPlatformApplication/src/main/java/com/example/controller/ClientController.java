@@ -19,21 +19,21 @@ public class ClientController {
     ClientService clientService ;
 
 
-    @PostMapping("/clients")
-    public ResponseEntity<Client> addClientHandler(@Valid  @RequestBody Client client) {
+    @PostMapping("/api/clients")
+    public ResponseEntity<Client> addClientHandler(  @RequestBody Client client) {
         Client newClient = clientService.createClient(client);
         return new ResponseEntity<>(newClient, HttpStatus.CREATED);
     }
 
 
-    @GetMapping("/clients/{id}")
+    @GetMapping("/api/clients/{id}")
     public ResponseEntity<Client> findClientHandler(@Valid  @PathVariable Integer id){
         Client client = clientService.findById(id);
 
         return new ResponseEntity<>(client,HttpStatus.FOUND);
     }
 
-    @GetMapping("/clients")
+    @GetMapping("/api/clients")
     public ResponseEntity<List<Client>> getListOfAllClientsHandler(){
 
         List<Client> list = clientService.findAllClient();
@@ -41,7 +41,7 @@ public class ClientController {
         return new ResponseEntity<>(list ,HttpStatus.FOUND);
     }
 
-    @PutMapping("/clients/{id}")
+    @PutMapping(" /api/clients/{id}")
     public ResponseEntity<Client> updateClient(@Valid  @PathVariable Integer id, @RequestBody Client client) {
 
         clientService.updateClientInfo(id , client );
@@ -49,7 +49,7 @@ public class ClientController {
         return new ResponseEntity<>(client ,HttpStatus.OK);
     }
 
-    @DeleteMapping("/clients/{id}")
+    @DeleteMapping("/api/clients/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable int id) {
       String result =  clientService.deleteClient(id);
 

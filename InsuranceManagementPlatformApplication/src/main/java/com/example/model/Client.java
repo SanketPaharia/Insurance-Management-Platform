@@ -27,9 +27,10 @@ public class Client {
     @NotBlank
     private String address;
 
-    @NotBlank
+
     private Long contactInformation;
 
-    @OneToMany(mappedBy = "client")
-    private Set<InsurancePolicy> insurancePolicies = new HashSet<>();
+//    @OneToMany(mappedBy = "client")
+//    private Set<InsurancePolicy> insurancePolicies = new HashSet<>();
+
 }

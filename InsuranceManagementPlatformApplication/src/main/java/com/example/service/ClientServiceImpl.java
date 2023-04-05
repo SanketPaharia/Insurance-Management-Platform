@@ -91,7 +91,7 @@ public class ClientServiceImpl implements ClientService{
         if (newclient.isPresent()) {
 
            clientDao.deleteById(id);
-            return "Client with id: " + id + "deleted" ;
+            return "Client with id: " + id + " deleted" ;
         }
 
         else{
