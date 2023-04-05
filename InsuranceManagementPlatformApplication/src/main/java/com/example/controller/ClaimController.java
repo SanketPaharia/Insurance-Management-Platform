@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.Dto.ClaimDto;
 import com.example.model.Claim;
 import com.example.model.Client;
 import com.example.service.ClaimService;
@@ -21,8 +22,8 @@ public class ClaimController {
 
 
     @PostMapping("/claims")
-    public ResponseEntity<Claim> addClaimHandler(@Valid @RequestBody Claim claim) {
-        Claim newClaim = claimService.createClaim(claim);
+    public ResponseEntity<Claim> addClaimHandler(@Valid @RequestBody ClaimDto claimDto) {
+        Claim newClaim = claimService.createClaim(claimDto);
         return new ResponseEntity<>(newClaim, HttpStatus.CREATED);
     }
 
@@ -44,11 +45,9 @@ public class ClaimController {
     }
 
     @PutMapping("/claims/{id}")
-    public ResponseEntity<Claim> updateClaim(@Valid  @PathVariable Integer id, @RequestBody Claim claim) {
+    public ResponseEntity<Claim> updateClaim(@Valid  @PathVariable Integer id, @RequestBody ClaimDto claimDto) {
 
-        claimService.updateClaim(id , claim);
-
-        return new ResponseEntity<>(claim ,HttpStatus.OK);
+        return new ResponseEntity<>(claimService.updateClaim(id , claimDto) ,HttpStatus.OK);
     }
 
     @DeleteMapping("/claims/{id}")

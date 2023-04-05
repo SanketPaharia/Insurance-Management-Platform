@@ -1,6 +1,7 @@
 package com.example.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,7 +31,8 @@ public class Client {
 
     private Long contactInformation;
 
-//    @OneToMany(mappedBy = "client")
-//    private Set<InsurancePolicy> insurancePolicies = new HashSet<>();
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
+    private InsurancePolicy insurancePolicies;
 
 }

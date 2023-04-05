@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.Dto.InsurancePolicyDto;
 import com.example.model.Claim;
 import com.example.model.InsurancePolicy;
 import com.example.service.InsurancePolicyService;
@@ -21,8 +22,8 @@ public class InsurancePolicyController {
 
 
     @PostMapping("/api/policies")
-    public ResponseEntity<InsurancePolicy> addPolicyHandler(@Valid @RequestBody InsurancePolicy insurancePolicy) {
-        InsurancePolicy newPolicy = insurancePolicyService.createInsurancePolicy(insurancePolicy);
+    public ResponseEntity<InsurancePolicy> addPolicyHandler(@Valid @RequestBody InsurancePolicyDto insurancePolicyDto) {
+        InsurancePolicy newPolicy = insurancePolicyService.createInsurancePolicy(insurancePolicyDto);
 
         return new ResponseEntity<>(newPolicy, HttpStatus.CREATED);
     }
@@ -44,8 +45,8 @@ public class InsurancePolicyController {
     }
 
     @PutMapping("/api/policies/{id}")
-    public ResponseEntity<InsurancePolicy> updatePolicy(@Valid  @PathVariable Integer id, @RequestBody InsurancePolicy insurancePolicy) {
-       InsurancePolicy newPolicy =insurancePolicyService.updateInsurancePolicy(id , insurancePolicy);
+    public ResponseEntity<InsurancePolicy> updatePolicy(@Valid  @PathVariable Integer id, @RequestBody InsurancePolicyDto insurancePolicyDto) {
+       InsurancePolicy newPolicy =insurancePolicyService.updateInsurancePolicy(id , insurancePolicyDto);
 
 
         return new ResponseEntity<>( newPolicy,HttpStatus.OK);

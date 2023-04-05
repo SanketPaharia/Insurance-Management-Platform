@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.Dto.ClientDto;
 import com.example.model.Client;
 import com.example.service.ClientService;
 import org.apache.catalina.User;
@@ -20,8 +21,8 @@ public class ClientController {
 
 
     @PostMapping("/api/clients")
-    public ResponseEntity<Client> addClientHandler(  @RequestBody Client client) {
-        Client newClient = clientService.createClient(client);
+    public ResponseEntity<Client> addClientHandler(  @RequestBody ClientDto clientDto) {
+        Client newClient = clientService.createClient(clientDto);
         return new ResponseEntity<>(newClient, HttpStatus.CREATED);
     }
 
@@ -42,11 +43,9 @@ public class ClientController {
     }
 
     @PutMapping(" /api/clients/{id}")
-    public ResponseEntity<Client> updateClient(@Valid  @PathVariable Integer id, @RequestBody Client client) {
+    public ResponseEntity<Client> updateClient(@Valid  @PathVariable Integer id, @RequestBody ClientDto clientDto) {
 
-        clientService.updateClientInfo(id , client );
-
-        return new ResponseEntity<>(client ,HttpStatus.OK);
+        return new ResponseEntity<>(clientService.updateClientInfo(id , clientDto ),HttpStatus.OK);
     }
 
     @DeleteMapping("/api/clients/{id}")

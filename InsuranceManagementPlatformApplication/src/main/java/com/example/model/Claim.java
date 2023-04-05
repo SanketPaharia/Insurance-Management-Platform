@@ -6,6 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "claims")
@@ -23,7 +26,11 @@ public class Claim {
     @NotBlank
     private String claimStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "policy_id")
+    @OneToOne
+    private Client client;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade =  CascadeType.ALL)
     private InsurancePolicy insurancePolicy;
+
+
 }

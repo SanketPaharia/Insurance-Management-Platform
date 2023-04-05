@@ -1,8 +1,11 @@
 package com.example.service;
 
+import com.example.Dto.ClientDto;
 import com.example.exception.ClientException;
 import com.example.model.Client;
+import com.example.model.InsurancePolicy;
 import com.example.repository.ClientDao;
+import com.example.repository.InsurancePolicyDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ import java.util.Optional;
 public class ClientServiceImpl implements ClientService{
     @Autowired
     ClientDao clientDao ;
+
+    @Autowired
+    InsurancePolicyDao insurancePolicyDao;
 
     @Override
     public List<Client> findAllClient() {
@@ -51,23 +57,22 @@ public class ClientServiceImpl implements ClientService{
 
 
     @Override
-    public Client createClient(Client client) {
+    public Client createClient(ClientDto clientDto) {
 
-       Optional<Client> newclient = clientDao.findById(client.getId());
+        InsurancePolicy insurancePolicy = this.insurancePolicyDao.findById(clientDto.getInsuranceId()).orElseThrow(() -> new RuntimeException("Invalid Insurance Id"));
 
-        if (newclient.isEmpty()) {
+        Client client = this.dtoToClient(clientDto);
 
-           return clientDao.save(client);
-        }
+        client.setInsurancePolicies(insurancePolicy);
+        insurancePolicy.setClient(client);
 
-        else{
-            throw new ClientException("Client already registered");
+//        this.insurancePolicyDao.save(insurancePolicy);
 
-        }
+        return clientDao.save(client);
     }
 
     @Override
-    public Client updateClientInfo( int id , Client client) {
+    public Client updateClientInfo( int id , ClientDto clientDto) {
         Optional<Client> newClient = clientDao.findById(id);
 
         if (newClient.isEmpty()) {
@@ -76,10 +81,10 @@ public class ClientServiceImpl implements ClientService{
         }
 
         Client existingClient = newClient.get();
-        existingClient.setName(client.getName());
-        existingClient.setDateOfBirth(client.getDateOfBirth());
-        existingClient.setAddress(client.getAddress());
-        existingClient.setContactInformation(client.getContactInformation());
+        existingClient.setName(clientDto.getName());
+        existingClient.setDateOfBirth(clientDto.getDateOfBirth());
+        existingClient.setAddress(clientDto.getAddress());
+        existingClient.setContactInformation(clientDto.getContactInformation());
 
         return clientDao.save(existingClient);
     }
@@ -98,5 +103,14 @@ public class ClientServiceImpl implements ClientService{
             throw new ClientException("no client found with id: " + id );
 
         }
+    }
+    public Client dtoToClient(ClientDto clientDto){
+        Client client = new Client();
+        client.setName(clientDto.getName());
+        client.setDateOfBirth(clientDto.getDateOfBirth());
+        client.setAddress(clientDto.getAddress());
+        client.setContactInformation(clientDto.getContactInformation());
+
+        return client;
     }
 }
