@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.model;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class InsurancePolicy {
     private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+        @JoinColumn(name = "client_id")
     private Client client;
 
 

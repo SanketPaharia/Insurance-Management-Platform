@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.model;
 
 
 import lombok.Data;
@@ -16,7 +16,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NotBlank
     private String name;

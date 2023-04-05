@@ -1,7 +1,6 @@
-package com.example.demo.service;
+package com.example.service;
 
-import com.example.demo.model.Claim;
-import com.example.demo.model.InsurancePolicy;
+import com.example.model.Claim;
 
 import java.util.List;
 
