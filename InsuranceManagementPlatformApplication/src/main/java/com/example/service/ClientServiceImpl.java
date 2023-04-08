@@ -26,8 +26,8 @@ public class ClientServiceImpl implements ClientService{
 
         List<Client> list = new ArrayList<>();
 
-       list =  clientDao.findAll();
-
+//       list =  clientDao.findAll();
+        list =  clientDao.findSortedClientByName();
         if (list.size()!=0) {
 
             return list ;
